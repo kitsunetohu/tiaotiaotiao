@@ -6,7 +6,7 @@ using MonsterLove.StateMachine;
 public class PlayerController : MonoBehaviour
 {
     public float maxSpeed = 5f;
-    public float minSpeed=0.5f;//落地缓冲时的速度
+    public float minSpeed = 0.5f;//落地缓冲时的速度
     public float JumpHeight = 2f;
     public float GroundDistance = 0.2f;
     public float DashDistance = 5f;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded = true;
     private Transform _groundChecker;
     private float Speed;
-  
+
 
 
     Animator playerAnimator;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         playerFsm.ChangeState(PlayerStates.wait);
         _body = GetComponent<Rigidbody>();
         _groundChecker = transform.GetChild(0);
-        Speed=maxSpeed;
+        Speed = maxSpeed;
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void wait_Enter()
     {
-        playerAnimator.Play("Standing@loop");
+        playerAnimator.CrossFade("Standing@loop",0.2f,0,0.8f);
     }
     void wait_Update()
     {
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     void run_Enter()
     {
-        playerAnimator.Play("Running@loop");
+        playerAnimator.CrossFade("Running@loop",0.2f,0,0.8f);
     }
     void run_Update()
     {
@@ -91,14 +91,14 @@ public class PlayerController : MonoBehaviour
             playerFsm.ChangeState(PlayerStates.wait);
         }
         if (Input.GetButtonDown("Jump") && _isGrounded)
-        {           
+        {
             playerFsm.ChangeState(PlayerStates.jump);
         }
     }
 
     void jump_Enter()
     {
-        playerAnimator.SetBool("Land",false);
+        playerAnimator.SetBool("Land", false);
         playerAnimator.Play("JumpToTop");
     }
     void jump_Update()
@@ -106,21 +106,33 @@ public class PlayerController : MonoBehaviour
 
         if (_body.velocity.y < 0)
         {
-            
+
             if (_isGrounded)
             {//马上就要着陆,跳起动画状态下模型会比collider高
-                playerAnimator.SetBool("Land",true);   
-                Speed=minSpeed;
+                Speed = minSpeed;
+                playerAnimator.SetBool("Land", true);
+
             }
-           
+
         }
     }
 
-    public void ChargeOver(){
-       _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+    public void ChargeOver()
+    {
+        _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
     }
-    public void Land(){
-        Speed=maxSpeed;
-        playerFsm.ChangeState(PlayerStates.wait);
+    public void Land()
+    {
+        Speed = maxSpeed;
+        if (_inputs.x == 0)
+        {
+            playerFsm.ChangeState(PlayerStates.wait);
+        }
+        else
+        {
+           playerFsm.ChangeState(PlayerStates.run);
+           
+        }
+
     }
 }
