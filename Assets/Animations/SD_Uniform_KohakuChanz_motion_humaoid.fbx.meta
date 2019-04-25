@@ -951,14 +951,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: OnCallChangeFace
-        data: surprise
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
@@ -3485,10 +3478,11 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9050632
-        functionName: OnCallChangeFace
-        data: smile2
-        objectReferenceParameter: {instanceID: 0}
+      - time: 0.4948097
+        functionName: ChargeOver
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 0cfc0cfa07e010b40843618aaeb4b50e,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -3791,14 +3785,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: OnCallChangeFace
-        data: smile2
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
@@ -4099,24 +4086,11 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.23575942
-        functionName: OnCallChangeFace
-        data: eye_close
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.43987337
-        functionName: OnCallChangeFace
-        data: default
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: OnCallChangeFace
-        data: smile2
-        objectReferenceParameter: {instanceID: 0}
+      - time: 0.5305343
+        functionName: Land
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 0cfc0cfa07e010b40843618aaeb4b50e,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
