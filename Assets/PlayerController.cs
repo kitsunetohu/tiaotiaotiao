@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             if (_isGrounded)
             {//马上就要着陆,跳起动画状态下模型会比collider高
                 playerAnimator.SetBool("Land",true);   
-                Speed=0.1f*Speed;
+                Speed=minSpeed;
             }
            
         }
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
        _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
     }
     public void Land(){
-        Speed=10*Speed;
+        Speed=maxSpeed;
         playerFsm.ChangeState(PlayerStates.wait);
     }
 }

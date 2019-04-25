@@ -515,5 +515,13 @@ PrefabInstance:
       propertyPath: JumpHeight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1887744422, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887744422, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
+      propertyPath: minSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
