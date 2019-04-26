@@ -31,7 +31,6 @@ Transform:
   m_LocalPosition: {x: -8.73, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3366084326026112565}
   - {fileID: 5416398123830420253}
   - {fileID: 7160672182572493505}
   - {fileID: 962872725288073293}
@@ -70,13 +69,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfc0cfa07e010b40843618aaeb4b50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  maxSpeed: 5
+  minSpeed: 0.5
   JumpHeight: 2
   GroundDistance: 0.2
   DashDistance: 5
   Ground:
     serializedVersion: 2
     m_Bits: 512
+  speedToHighest: 1
+  _groundChecker: {fileID: 0}
 --- !u!54 &1887744423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ Transform:
   m_Children:
   - {fileID: 874260181481741159}
   m_Father: {fileID: 8834285272615794204}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667745691252347160
 GameObject:
@@ -348,12 +350,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670047839336002906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.049120344, z: -0.41803354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8834285272615794204}
-  m_RootOrder: 0
+  m_Father: {fileID: 874260181481741159}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &706396931817389591
 GameObject:
@@ -830,7 +832,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8834285272615794204}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &507909228641923039
 SkinnedMeshRenderer:
@@ -950,6 +952,7 @@ Transform:
   - {fileID: 8088207454619878936}
   - {fileID: 8722347664452304558}
   - {fileID: 1008422026200624166}
+  - {fileID: 3366084326026112565}
   m_Father: {fileID: 7160672182572493505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1106,7 +1109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8834285272615794204}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7470927534641027338
 SkinnedMeshRenderer:
@@ -3596,7 +3599,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8834285272615794204}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7384464212711589239
 SkinnedMeshRenderer:
