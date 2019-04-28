@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     public float minSpeed = 0.5f;//落地缓冲时的速度
     public float JumpHeight = 2f;
-    public float GroundDistance = 0.2f;
+    public float GroundDistance = 0.1f;
     public float DashDistance = 5f;
     public LayerMask Ground;
     public float speedToHighest = 1;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded = true;
 
     private float Speed;
+    private bool isJumping = false;
     CapsuleCollider capsuleCollider;
 
     float yBeforJump;
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     void wait_Enter()
     {
-        playerAnimator.CrossFade("Standing@loop", 0.2f, 0, 0.8f);
+        playerAnimator.CrossFade("Standing@loop", 0.1f, 0, 0.2f);
     }
     void wait_Update()
     {
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     void run_Enter()
     {
-        playerAnimator.CrossFade("Running@loop", 0.2f, 0, 0.8f);
+        playerAnimator.CrossFade("Running@loop", 0.1f, 0, 0.2f);
     }
     void run_Update()
     {
@@ -105,41 +106,27 @@ public class PlayerController : MonoBehaviour
 
     void jump_Enter()
     {
-        playerAnimator.SetBool("Land", false);
-        playerAnimator.Play("JumpToTop");
+
+        playerAnimator.CrossFade("Jumping@loop", 0.05f, 0, 0.05f);
+
     }
     void jump_Update()
     {
-        if(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("TopOfJump")){
-            playerAnimator.applyRootMotion=false;
-            capsuleCollider.center = new Vector3(capsuleCollider.center.x, 1.2f, capsuleCollider.center.z);
-        }
-        else{
-            playerAnimator.applyRootMotion=true;
-            capsuleCollider.center = new Vector3(capsuleCollider.center.x, 0.58f, capsuleCollider.center.z);
-        }
 
-
-        if (_body.velocity.y < -2.0f)
+        if (_isGrounded && isJumping)
         {
+            Debug.Log("zhaodi");
+            Speed = minSpeed;
+            Land();
 
-            Debug.Log(_body.velocity.y);
-            if (_isGrounded)
-            {
-                Speed = minSpeed;
-                playerAnimator.SetBool("Land", true);
-              // capsuleCollider.center = new Vector3(capsuleCollider.center.x, 0.58f, capsuleCollider.center.z);
-
-            }
+            playerFsm.ChangeState(PlayerStates.wait);
 
         }
 
-        if (!_isGrounded)
-        {
-            //capsuleCollider.center = new Vector3(capsuleCollider.center.x, 1.2f, capsuleCollider.center.z);//移动中心使碰撞体吻合
-        }
-
-
+    }
+    void jump_Exit()
+    {
+        isJumping = false;
     }
 
     public void ChargeOver()
@@ -159,5 +146,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    void changeJumping()
+    {
+        isJumping = true;
     }
 }
