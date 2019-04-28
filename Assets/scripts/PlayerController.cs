@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour
     {
 
         playerAnimator.CrossFade("Jumping@loop", 0.05f, 0, 0.05f);
+        //playerAnimator.Play("Jumping@loop");
+        StartCoroutine(JumpCharge());
 
     }
     void jump_Update()
@@ -124,15 +126,18 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    IEnumerator JumpCharge(){
+
+        yield return new WaitForSeconds(0.05f);
+        _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+    }
     void jump_Exit()
     {
         isJumping = false;
     }
 
-    public void ChargeOver()
-    {
-        _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
-    }
+
     public void Land()
     {
         Speed = maxSpeed;
