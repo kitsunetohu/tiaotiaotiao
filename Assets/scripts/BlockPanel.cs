@@ -40,6 +40,7 @@ public class BlockPanel : MonoBehaviour
             Camera.main.gameObject.transform.position - 100 * Camera.main.gameObject.transform.forward,
             Quaternion.identity);
         }
+        chosingBlock.GetComponent<Block>().PutItUp();
 
     }
 
@@ -55,6 +56,7 @@ public class BlockPanel : MonoBehaviour
                 blockNumber[buttonNum] -= 1;
                 RefreshNum();
                 fsm.ChangeState(ChoosingState.Prepare);
+                chosingBlock.GetComponent<Block>().PutItDown();
                 chosingBlock = null;
             }
         }

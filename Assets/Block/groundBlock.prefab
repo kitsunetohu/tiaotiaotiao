@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7234527678586230289}
   - component: {fileID: 1757827297422953833}
   - component: {fileID: 4825045830058441295}
+  - component: {fileID: 5235054116715150869}
   m_Layer: 9
-  m_Name: ground
+  m_Name: groundBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,8 +87,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235054116715150868}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5235054116715150869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235054116715150868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d1824cf83d41a469bffaf40c448d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canThrough: 0
+  undown: {fileID: 2100000, guid: 2bcb9d63c91cf06479aedf489dac1c2e, type: 2}
+  down: {fileID: 2100000, guid: bdf3f1dfed2af8e41bf253bc95a5785d, type: 2}

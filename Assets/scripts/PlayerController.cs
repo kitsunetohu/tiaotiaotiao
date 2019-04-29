@@ -108,14 +108,13 @@ public class PlayerController : MonoBehaviour
     {
 
         playerAnimator.CrossFade("Jumping@loop", 0.05f, 0, 0.05f);
-        //playerAnimator.Play("Jumping@loop");
         StartCoroutine(JumpCharge());
 
     }
     void jump_Update()
     {
 
-        if (_isGrounded && isJumping)
+        if (_isGrounded && isJumping)//キャラが空中に飛ぶあと、着地する時発動する
         {
             Debug.Log("zhaodi");
             Speed = minSpeed;
@@ -128,7 +127,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator JumpCharge(){
-
+        //ジャンプする前に遅延があるので、チャレンジ完了あと、YUKOにスピードを与える
         yield return new WaitForSeconds(0.05f);
         _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
     }
@@ -153,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void changeJumping()
+    void changeJumping()//アニメーションにコールバックされる
     {
         isJumping = true;
     }

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class GroundBlock : Block
 {
-    //经过后是否消失
-    public bool detoryOnTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +15,4 @@ public class Block : MonoBehaviour
     {
         
     }
-
-    void OnCollisionEnter(Collision collision){
-        
-    }
-
 }
