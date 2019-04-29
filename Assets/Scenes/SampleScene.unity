@@ -847,6 +847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yuko_win_humanoid
       objectReference: {fileID: 0}
+    - target: {fileID: 1887744421, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8834285272615794204, guid: 28682c6c06fa31c4b86e1c9cbf035837,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1384,27 +1388,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62491a578a43a1448887a3fe1713d156, type: 3}
---- !u!1 &5235054116715150868 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5235054116715150868, guid: 6bb9a33ccf64c5e42aedea970d72e294,
-    type: 3}
-  m_PrefabInstance: {fileID: 8777968821573511938}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5235054116715150869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5235054116715150868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d1824cf83d41a469bffaf40c448d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canThrough: 0
-  undown: {fileID: 2100000, guid: bdf3f1dfed2af8e41bf253bc95a5785d, type: 2}
-  down: {fileID: 2100000, guid: 2bcb9d63c91cf06479aedf489dac1c2e, type: 2}
 --- !u!1001 &8777968821573511938
 PrefabInstance:
   m_ObjectHideFlags: 0

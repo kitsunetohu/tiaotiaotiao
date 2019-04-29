@@ -13,6 +13,6 @@ public class GroundBlock : Block
     // Update is called once per frame
     void Update()
     {
-        
+        base.Update();
     }
 }

@@ -126,7 +126,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator JumpCharge(){
+    IEnumerator JumpCharge()
+    {
         //ジャンプする前に遅延があるので、チャレンジ完了あと、YUKOにスピードを与える
         yield return new WaitForSeconds(0.05f);
         _body.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);

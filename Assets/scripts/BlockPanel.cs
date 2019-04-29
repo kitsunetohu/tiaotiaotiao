@@ -72,7 +72,7 @@ public class BlockPanel : MonoBehaviour
         chosingButton = blockButtons[buttonNum];
         chosingBlock = blockList[buttonNum];
         this.buttonNum = buttonNum;
-        Debug.Log("button" + buttonNum);
+        
         fsm.ChangeState(ChoosingState.Choosing);
     }
 
