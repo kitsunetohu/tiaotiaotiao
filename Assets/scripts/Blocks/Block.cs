@@ -23,7 +23,7 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
     // Update is called once per frame
     protected void Update()
     {
-        Debug.Log("isPickUp");
+
         if (isPickUp)
         {
 
@@ -49,6 +49,8 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         {
             overlapWarning = false;
         }
+
+
     }
 
     public void PutItUp()
@@ -56,12 +58,20 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         GetComponent<MeshRenderer>().material = undown;
         GetComponent<Collider>().isTrigger = true;
         isPickUp = true;
+        Debug.Log(isPickUp);
+
     }
 
-    public void PutItDown()
+    public bool PutItDown()
     {
+        if (overlapWarning == true)
+        {
+            return false;
+        }
         isPickUp = false;
         GetComponent<MeshRenderer>().material = down;
         GetComponent<Collider>().isTrigger = false;
+
+        return true;
     }
 }

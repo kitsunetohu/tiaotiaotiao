@@ -22,14 +22,15 @@ public class BlockPanel : MonoBehaviour
     public List<int> _blockNumber;
     public List<Button> blockButtons;
     public List<int> blockNumber;
-     int buttonNum;
+    int buttonNum;
+    List<GameObject> instantiatedButtons=new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         fsm = StateMachine<ChoosingState>.Initialize(this);
         fsm.ChangeState(ChoosingState.Prepare);
         InitializeNum();
-        RefreshNum();       
+        RefreshNum();
     }
 
     void Choosing_Enter()
@@ -53,11 +54,22 @@ public class BlockPanel : MonoBehaviour
             chosingBlock.transform.position = hit.point;
             if (Input.GetMouseButtonUp(0))
             {//松开切换状态
-                blockNumber[buttonNum] -= 1;
-                RefreshNum();
-                fsm.ChangeState(ChoosingState.Prepare);
-                chosingBlock.GetComponent<Block>().PutItDown();
-                chosingBlock = null;
+
+                if (chosingBlock.GetComponent<Block>().PutItDown())
+                {
+                    fsm.ChangeState(ChoosingState.Prepare);
+                    blockNumber[buttonNum] -= 1;
+                    instantiatedButtons.Add(chosingBlock);
+                    RefreshNum();
+                    chosingBlock = null;
+                }
+                else
+                {
+                    Destroy(chosingBlock);
+                    fsm.ChangeState(ChoosingState.Prepare);
+                    chosingBlock = null;
+                }
+
             }
         }
 
@@ -72,18 +84,18 @@ public class BlockPanel : MonoBehaviour
         chosingButton = blockButtons[buttonNum];
         chosingBlock = blockList[buttonNum];
         this.buttonNum = buttonNum;
-        
+
         fsm.ChangeState(ChoosingState.Choosing);
     }
 
     void RefreshNum()
-    {
+    {//UIで残ったBlockの数を更新する
         try
         {
-            for (int i=0;i<blockNumber.Count;i++)
+            for (int i = 0; i < blockNumber.Count; i++)
             {
                 string buttonNumInText = System.Convert.ToString(blockNumber[i]);
-                blockButtons[i].GetComponentInChildren<Text>().text=buttonNumInText;
+                blockButtons[i].GetComponentInChildren<Text>().text = buttonNumInText;
             }
 
         }
@@ -93,11 +105,23 @@ public class BlockPanel : MonoBehaviour
         }
     }
 
-    void InitializeNum(){
-        blockNumber=new List<int>();
+    void InitializeNum()
+    {
+        //blockNumberにBlockの数を保存する
+        blockNumber = new List<int>();
+        blockNumber.Clear();
         for (int i = 0; i < _blockNumber.Count; i++)
         {//初期化
-            blockNumber.Add(_blockNumber[i]) ;
+            blockNumber.Add(_blockNumber[i]);
         }
+    }
+
+    public void Reset()
+    {
+        foreach(GameObject x in instantiatedButtons){
+            Destroy(x);
+        }
+        InitializeNum();
+        RefreshNum();
     }
 }
