@@ -109,6 +109,8 @@ MonoBehaviour:
   undown: {fileID: 2100000, guid: 2bcb9d63c91cf06479aedf489dac1c2e, type: 2}
   down: {fileID: 2100000, guid: bdf3f1dfed2af8e41bf253bc95a5785d, type: 2}
   warning: {fileID: 2100000, guid: 5bb02309ffe7bcb43889d216bee0b36a, type: 2}
+  debugBall: {fileID: 4015303871984690245, guid: fb3183ad175008d46b12cc6243c732aa,
+    type: 3}
 --- !u!54 &5235054116715150870
 Rigidbody:
   m_ObjectHideFlags: 0

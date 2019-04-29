@@ -10,10 +10,11 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
     public Material undown;
     public Material down;
     public Material warning;
+    public GameObject debugBall;
 
 
     bool isPickUp = false;
-    bool overlapWarning = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +24,11 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
     // Update is called once per frame
     protected void Update()
     {
-
+        
         if (isPickUp)
         {
-
-            if (overlapWarning)
+           
+            if (OverlapWarning())
             {
                 GetComponent<MeshRenderer>().material = warning;
             }
@@ -39,18 +40,24 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         }
     }
 
-    void OnTriggerStay(Collider collider)
+    bool OverlapWarning()
     {
-        if (collider.gameObject.tag == "Player" || (collider.gameObject.tag == "cantOverlap"))
-        {
-            overlapWarning = true;
+        Collider[] collisions = Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size / 2.0f, transform.rotation);
+        
+       
+        foreach (Collider x in collisions)
+        {   
+            if (x.gameObject.CompareTag("Player") || x.gameObject.CompareTag("cantOverlap"))
+            {
+                if(x.gameObject!=gameObject)return true;
+               
+            }
         }
-        else
-        {
-            overlapWarning = false;
-        }
-
-
+        return false;
+    }
+    void OnDrawGizmosSelected(){
+         Gizmos.color = new Color(1, 1, 0, 1.0f);
+         Gizmos.DrawCube(transform.position, GetComponent<BoxCollider>().size);
     }
 
     public void PutItUp()
@@ -58,13 +65,12 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         GetComponent<MeshRenderer>().material = undown;
         GetComponent<Collider>().isTrigger = true;
         isPickUp = true;
-        Debug.Log(isPickUp);
-
+       
     }
 
     public bool PutItDown()
     {
-        if (overlapWarning == true)
+        if (OverlapWarning() == true)
         {
             return false;
         }
