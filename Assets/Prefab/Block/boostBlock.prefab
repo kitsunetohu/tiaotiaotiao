@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3967989538214804912}
   - component: {fileID: 7971161570486336751}
   - component: {fileID: 8311732550470573635}
+  - component: {fileID: 8765340377005418631}
   m_Layer: 0
-  m_Name: waterBlock
+  m_Name: boostBlock
   m_TagString: cantOverlap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 419193820461425941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.386835, y: -1.1873336, z: -0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.19, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,3 +109,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8765340377005418631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419193820461425941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3143b62a88fdeba4e83ebb87adaf8a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canThrough: 0
+  undown: {fileID: 2100000, guid: 27ae67a9df47a1743b8ac920f70d16e6, type: 2}
+  down: {fileID: 2100000, guid: 8d2979ed26b8ac745befc5a68c359202, type: 2}
+  warning: {fileID: 2100000, guid: 5bb02309ffe7bcb43889d216bee0b36a, type: 2}
+  debugBall: {fileID: 0}

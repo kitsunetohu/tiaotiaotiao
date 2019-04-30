@@ -98,19 +98,18 @@ public class PlayerController : MonoBehaviour {
 
         if (_isGrounded && isJumping) //キャラが空中に飛ぶあと、着地する時発動する
         {
-            Debug.Log ("zhaodi");
-
             Land ();
 
             playerFsm.ChangeState (PlayerStates.wait);
 
         }
 
+        
     }
 
     IEnumerator JumpCharge () {
         //ジャンプする前に遅延があるので、チャレンジ完了あと、YUKOにスピードを与える
-        yield return new WaitForSeconds (0.05f);
+        yield return new WaitForSeconds (0.1f);
         _body.AddForce (Vector3.up * Mathf.Sqrt (JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
     }
     void jump_Exit () {
@@ -118,6 +117,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Land () {
+        Debug.Log("land");
         playerAnimator.speed = 1;
         Speed = maxSpeed;
         if (_inputs.x == 0) {
@@ -132,6 +132,16 @@ public class PlayerController : MonoBehaviour {
     void changeJumping () //アニメーションにコールバックされる
     {
         isJumping = true;
-        playerAnimator.speed = animaSpeedInSky;
+        
+    }
+
+    void PauseJump(){
+        if(!_isGrounded){
+            //playerAnimator.speed = animaSpeedInSky;
+            
+            Debug.Log("pause");
+        }
+        
+        
     }
 }

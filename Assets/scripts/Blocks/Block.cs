@@ -55,10 +55,7 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         }
         return false;
     }
-    void OnDrawGizmosSelected(){
-         Gizmos.color = new Color(1, 1, 0, 1.0f);
-         Gizmos.DrawCube(transform.position, GetComponent<BoxCollider>().size);
-    }
+
 
     public void PutItUp()
     {
