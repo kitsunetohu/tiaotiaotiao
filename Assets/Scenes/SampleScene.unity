@@ -688,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1887744422, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
       propertyPath: JumpHeight
-      value: 50
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1887744422, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}
       propertyPath: GroundDistance
@@ -697,6 +697,11 @@ PrefabInstance:
     - target: {fileID: 2302825374358408907, guid: 28682c6c06fa31c4b86e1c9cbf035837,
         type: 3}
       propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302825374358408907, guid: 28682c6c06fa31c4b86e1c9cbf035837,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1887744423, guid: 28682c6c06fa31c4b86e1c9cbf035837, type: 3}

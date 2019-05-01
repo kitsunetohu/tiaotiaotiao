@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 
     void PauseJump(){
         if(!_isGrounded){
-            //playerAnimator.speed = animaSpeedInSky;
+            playerAnimator.speed = animaSpeedInSky;
             
             Debug.Log("pause");
         }
