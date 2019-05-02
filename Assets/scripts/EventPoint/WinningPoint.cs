@@ -19,7 +19,9 @@ public class WinningPoint : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.tag=="Player"){
             //win
+            GameManager.Instance.getGameResult(true);
             
         }
+        Debug.Log("win");
     }
 }
