@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MonsterLove.StateMachine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-public class GameManager : Manager<GameManager>
+using MonsterLove.StateMachine;
+
+public class GameManager1 : Manager<GameManager1>
 {
+
     public UnityEvent UserWin;
     bool isWin;//Is player win when game over？
     public enum GameState
@@ -19,13 +20,13 @@ public class GameManager : Manager<GameManager>
 
     new void Awake()
     {
-        base.Awake();
+
         fsm = StateMachine<GameState>.Initialize(this);
         fsm.ChangeState(GameState.Prepare);
         if (UserWin == null)
         {
             UserWin = new UnityEvent();
-
+            Debug.Log("123");
         }
 
     }
@@ -50,17 +51,5 @@ public class GameManager : Manager<GameManager>
     {
         this.isWin = isWin;
         fsm.ChangeState(GameState.Result);
-    }
-
-    public void ReplayScene()
-    {
-        Debug.Log("replay");
-        SceneManager.LoadScene("SampleScene");
-        UIManger.Instance.Init();
-        fsm.ChangeState(GameState.Rurrning);
-    }
-
-    public void NextScene(){
-        Debug.Log("load next scene");
     }
 }
