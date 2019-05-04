@@ -7,7 +7,7 @@ public class test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<Rigidbody>().AddForce(10*transform.forward, ForceMode.Impulse);
     }
 
     // Update is called once per frame

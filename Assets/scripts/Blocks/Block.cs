@@ -73,7 +73,9 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
         }
         isPickUp = false;
         GetComponent<MeshRenderer>().material = down;
-        GetComponent<Collider>().isTrigger = false;
+        if(!canThrough){
+            GetComponent<Collider>().isTrigger = false;
+        }
 
         return true;
     }

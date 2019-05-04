@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         _body = GetComponent<Rigidbody>();
         //_groundChecker = transform.GetChild(0);
         Speed = maxSpeed;
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();   
     }
 
     void Update()
@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour
 
         if (_inputs != Vector3.zero)
             transform.forward = _inputs;
+
+        if(Input.GetKey(KeyCode.LeftShift)){
+            GetComponent<Rigidbody>().AddForce(DashDistance*transform.forward, ForceMode.Force);
+        }
+
 
     }
     void FixedUpdate()
@@ -119,6 +124,7 @@ public class PlayerController : MonoBehaviour
             playerFsm.ChangeState(PlayerStates.wait);
 
         }
+        _body.AddForce(DashDistance*transform.forward, ForceMode.Force);
 
 
     }
@@ -164,7 +170,11 @@ public class PlayerController : MonoBehaviour
             playerAnimator.speed = animaSpeedInSky;
 
         }
+    }
 
-
+    public void Dash(float DashDistance)
+    {
+        _body.AddForce(DashDistance*transform.forward, ForceMode.Impulse);
+       
     }
 }

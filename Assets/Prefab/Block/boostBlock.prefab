@@ -121,8 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3143b62a88fdeba4e83ebb87adaf8a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canThrough: 0
+  canThrough: 1
   undown: {fileID: 2100000, guid: 27ae67a9df47a1743b8ac920f70d16e6, type: 2}
   down: {fileID: 2100000, guid: 8d2979ed26b8ac745befc5a68c359202, type: 2}
   warning: {fileID: 2100000, guid: 5bb02309ffe7bcb43889d216bee0b36a, type: 2}
   debugBall: {fileID: 0}
+  boostDistance: 100
