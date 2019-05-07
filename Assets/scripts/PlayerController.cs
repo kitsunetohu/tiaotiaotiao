@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MonsterLove.StateMachine;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
         _isGrounded = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
         _inputs = Vector3.zero;
-        _inputs.x = Input.GetAxisRaw("Horizontal");
+        _inputs.x = CrossPlatformInputManager.GetAxisRaw("Horizontal");
 
         if (_inputs != Vector3.zero)
             transform.forward = _inputs;
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             playerFsm.ChangeState(PlayerStates.run);
         }
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && _isGrounded)
         {
             playerFsm.ChangeState(PlayerStates.jump);
         }
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         {
             playerFsm.ChangeState(PlayerStates.wait);
         }
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && _isGrounded)
         {
             playerFsm.ChangeState(PlayerStates.jump);
         }
