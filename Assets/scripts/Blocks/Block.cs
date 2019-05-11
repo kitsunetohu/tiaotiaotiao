@@ -10,7 +10,9 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
     public Material undown;
     public Material down;
     public Material warning;
-    public GameObject debugBall;
+    public GameObject ghost;
+    public GameObject overlapGhost;
+    //空物体下面挂三个物体，什么状态就enable哪个
 
 
     bool isPickUp = false;
