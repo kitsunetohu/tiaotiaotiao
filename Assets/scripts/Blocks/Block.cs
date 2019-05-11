@@ -81,4 +81,12 @@ public class Block : MonoBehaviour//ブロックというクラスの特徴は�
 
         return true;
     }
+
+    void UnActiveAllChild(){
+        Transform[] childrend=GetComponentsInChildren<Transform>();
+         foreach (Transform child in childrend)
+          {
+              child.gameObject.SetActive(false);
+          }
+    }
 }
