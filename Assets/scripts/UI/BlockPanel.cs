@@ -41,7 +41,7 @@ public class BlockPanel : MonoBehaviour
             Camera.main.gameObject.transform.position - 100 * Camera.main.gameObject.transform.forward,
             Quaternion.identity);
         }
-        chosingBlock.GetComponent<Block>().PutItUp();
+        chosingBlock.GetComponent<BlockGroup>().PutItUp();
 
     }
 
@@ -55,7 +55,7 @@ public class BlockPanel : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {//松开切换状态
 
-                if (chosingBlock.GetComponent<Block>().PutItDown())
+                if (chosingBlock.GetComponent<BlockGroup>().PutItDown())
                 {
                     fsm.ChangeState(ChoosingState.Prepare);
                     blockNumber[buttonNum] -= 1;

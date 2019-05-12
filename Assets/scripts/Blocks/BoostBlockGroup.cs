@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boostBlock : Block
+public class BoostBlockGroup : BlockGroup
 {
 
     public float boostDistance;
